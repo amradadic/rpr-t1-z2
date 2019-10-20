@@ -4,16 +4,24 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static int sumaCifara(int broj) {
+        if(broj < 0) broj *= -1;
+        int suma = 0;
+        while (broj > 0){
+            suma += broj % 10;
+            broj /= 10;
+        }
+        return suma;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Unesite 2 broja: ");
-
-        Scanner input = new Scanner(System.in);
-        int number = input.nextInt();
-
-        Scanner input2 = new Scanner(System.in);
-        int number2 = input.nextInt();
-
-        System.out.print("Zbir unesenih brojeva je: ");
-        System.out.println(number+number2);
+        System.out.print("Unesite neki broj: ");
+        Scanner ulaz = new Scanner(System.in);
+        int n = ulaz.nextInt();
+        System.out.println("Brojevi u rasponu od 1 do " + n + " koji su djeljivi sa sumom svojih cifara su: ");
+        for(int i = 1; i <= n; i++){
+            if(i % sumaCifara(i) == 0)
+                System.out.print(i + " ");
+        }
     }
 }
